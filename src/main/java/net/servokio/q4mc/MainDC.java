@@ -105,21 +105,23 @@ public class MainDC {
     }
 
     public void setupGuild(Guild guild) {
-        try{
-            guild.updateCommands().addCommands(
-                    Commands.slash("info", "Информация"),
-                    Commands.slash("help", "Помочь по командам"),
-                    Commands.slash("attack", "Атаковать сервер майкрафт")
-                            .addOption(OptionType.STRING, "address", "адрес сервера", true)
-                            .addOptions(this.protocols.getDiscordData())
-                            .addOptions(this.methods.getDiscordData()),
-                    Commands.slash("resolve", "Информация о сервере")
-                            .addOption(OptionType.STRING, "address", "адрес сервера", true)
-            ).queue();
-            System.out.println("Updated commands for G: "+guild.getName());
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-            System.out.println("E: Missing Access on guildID: "+guild.getId());
+        if(Config.WHITELIST_SERVERS.contains(guild.getId())){
+            try{
+                guild.updateCommands().addCommands(
+                        Commands.slash("info", "Информация"),
+                        Commands.slash("help", "Помочь по командам"),
+                        Commands.slash("attack", "Атаковать сервер майкрафт")
+                                .addOption(OptionType.STRING, "address", "адрес сервера", true)
+                                .addOptions(this.protocols.getDiscordData())
+                                .addOptions(this.methods.getDiscordData()),
+                        Commands.slash("resolve", "Информация о сервере")
+                                .addOption(OptionType.STRING, "address", "адрес сервера", true)
+                ).queue();
+                System.out.println("Updated commands for G: "+guild.getName());
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+                System.out.println("E: Missing Access on guildID: "+guild.getId());
+            }
         }
     }
 

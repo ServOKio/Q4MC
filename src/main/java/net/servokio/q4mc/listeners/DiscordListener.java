@@ -9,6 +9,7 @@ import net.dv8tion.jda.api.events.interaction.command.CommandAutoCompleteInterac
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.Command;
+import net.servokio.q4mc.Config;
 import net.servokio.q4mc.MainDC;
 import net.servokio.q4mc.threads.AttackThread;
 import net.servokio.q4mc.utils.Resolve;
@@ -31,6 +32,7 @@ public class DiscordListener extends ListenerAdapter {
     @Override
     public void onSlashCommandInteraction(@Nonnull SlashCommandInteractionEvent event) {
         if(event.getGuild() == null) return;
+        if(!Config.WHITELIST_SERVERS.contains(event.getGuild().getId())) return;
 
         if(event.getName().equals("info")){
             event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.info()).build()).queue();
@@ -76,6 +78,7 @@ public class DiscordListener extends ListenerAdapter {
 
     @Override
     public void onCommandAutoCompleteInteraction(CommandAutoCompleteInteractionEvent event) {
+        if(!Config.WHITELIST_SERVERS.contains(event.getGuild().getId())) return;
         if (event.getName().equals("attack") && event.getFocusedOption().getName().equals("protocol")) {
             List<Command.Choice> options = new ArrayList<>();
             for(String s : MainDC.getInstance().protocols.availableString){

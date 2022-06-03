@@ -14,7 +14,7 @@ public class Embeds {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setColor(new Color(0xCE0405));
         embed.setTitle(Config.SERVER_NAME);
-        embed.setDescription("Version: 1.0.5");
+        embed.setDescription("Version: 1.0.6");
         return embed.build();
     }
 
