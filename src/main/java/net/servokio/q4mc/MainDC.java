@@ -52,12 +52,7 @@ public class MainDC {
 
     public void init() {
         setInstance(this);
-        File dir1 = new File("./server");
-        System.out.println(dir1.getAbsolutePath());
-        if (!dir1.exists()) dir1.mkdirs();
-        File dir = new File("./server/jars");
-        if (!dir.exists()) dir.mkdirs();
-        File jar = new File("./server/jars/mcbot.jar");
+        File jar = new File("./mcbot.jar");
         try{
             if (jar.exists()) {
                 //Если есть
@@ -65,7 +60,7 @@ public class MainDC {
             } else {
                 URL website = new URL("https://github.com/llyxa05/MCBOT-crack/raw/main/MCBOT.jar");
                 ReadableByteChannel rbc = Channels.newChannel(website.openStream());
-                FileOutputStream fos = new FileOutputStream("./server/jars/mcbot.jar");
+                FileOutputStream fos = new FileOutputStream("./mcbot.jar");
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                 updateProxy();
             }

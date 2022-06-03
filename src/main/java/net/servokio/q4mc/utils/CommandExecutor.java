@@ -30,7 +30,7 @@ public class CommandExecutor {
             }
         } else {
             Runtime run = Runtime.getRuntime();
-            Process pr = run.exec("bash /c" + cmd);
+            Process pr = run.exec(cmd.replace("start ", ""));
             pr.waitFor();
             BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             String line = "";

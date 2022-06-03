@@ -22,7 +22,7 @@ public class AttackThread extends Thread{
     @Override
     public void run() {
         try {
-            CommandExecutor.exec(String.format("start java -Xmx128G -server -jar ./server/jars/mcbot.jar %s %d %s %d %s", this.addr, this.protocol, this.method, Config.ATTACK_TIME, Config.ATTACK_POWER));
+            CommandExecutor.exec(String.format("start java -Xmx128G -server -jar ./mcbot.jar %s %d %s %d %s", this.addr, this.protocol, this.method, Config.ATTACK_TIME, Config.ATTACK_POWER));
         } catch (InterruptedException e) {
             System.out.println("Interrupted id: "+id);
             System.out.println(e.getMessage());

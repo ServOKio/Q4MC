@@ -1,6 +1,5 @@
 package net.servokio.q4mc.utils;
 
-import com.google.gson.JsonObject;
 import net.servokio.q4mc.Config;
 
 import java.io.*;
@@ -19,18 +18,22 @@ public class ServerInfo {
     private String info;
     private int protocol;
 
-    public ServerInfo(JsonObject object) {
-        this.isOnline = object.get("online").getAsBoolean();
-        this.motd = object.get("motd").getAsString();
-        if(isOnline){
-            this.maxPlayer = object.get("players").getAsJsonObject().get("max").getAsInt();
-            this.now = object.get("players").getAsJsonObject().get("now").getAsInt();
-
-            if(object.has("favicon") && !object.get("favicon").isJsonNull()) this.favicon = object.get("favicon").getAsString();
-
-            this.info = object.get("server").getAsJsonObject().get("name").getAsString();
-            this.protocol = object.get("server").getAsJsonObject().get("protocol").getAsInt();
-        }
+    public ServerInfo(
+            boolean isOnline,
+            String motd,
+            int maxPlayer,
+            int now,
+            String favicon,
+            String info,
+            int protocol
+    ) {
+        this.isOnline = isOnline;
+        this.motd = motd;
+        this.maxPlayer = maxPlayer;
+        this.now = now;
+        this.favicon = favicon;
+        this.info = info;
+        this.protocol = protocol;
     }
 
     public boolean isOnline(){
