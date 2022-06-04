@@ -27,6 +27,7 @@ public class MCPing {
 
         String hostname = options.getHostname();
         int port = options.getPort();
+        String rawIP = hostname;
 
         try {
 
@@ -41,6 +42,14 @@ public class MCPing {
                     port = srv.getPort();
                 }
 
+            } else {
+                Record[] r1 = new Lookup(hostname, Type.A).run();
+                if (r1 != null) {
+                    for (Record record : r1) {
+                        ARecord a = (ARecord) record;
+                        rawIP = a.getAddress().getHostAddress();
+                    }
+                }
             }
         } catch (TextParseException e) {
             e.printStackTrace();
@@ -138,6 +147,7 @@ public class MCPing {
 
         MCPingResponse output = GSON.fromJson(jsonObject, MCPingResponse.class);
         output.setPing(ping);
+        output.setHostAndPost(rawIP, port);
 
         return output;
     }

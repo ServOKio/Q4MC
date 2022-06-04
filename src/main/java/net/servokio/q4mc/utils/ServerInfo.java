@@ -18,6 +18,8 @@ public class ServerInfo {
     private String info;
     private int protocol;
 
+    private String rawIp;
+
     public ServerInfo(
             boolean isOnline,
             String motd,
@@ -25,7 +27,8 @@ public class ServerInfo {
             int now,
             String favicon,
             String info,
-            int protocol
+            int protocol,
+            String rawIp
     ) {
         this.isOnline = isOnline;
         this.motd = motd;
@@ -34,6 +37,7 @@ public class ServerInfo {
         this.favicon = favicon;
         this.info = info;
         this.protocol = protocol;
+        this.rawIp = rawIp;
     }
 
     public boolean isOnline(){
@@ -118,5 +122,9 @@ public class ServerInfo {
 
     public int getProtocol() {
         return protocol;
+    }
+
+    public String getRawIp(){
+        return this.rawIp;
     }
 }

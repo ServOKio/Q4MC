@@ -9,6 +9,9 @@ public class MCPingResponse {
     private String favicon;
     private long ping;
 
+    private String ip;
+    public int port;
+
     public class Description {
         private String text;
 
@@ -97,5 +100,14 @@ public class MCPingResponse {
 
     public String getFavicon() {
         return favicon;
+    }
+
+    public void setHostAndPost(String ip, int port){
+        this.ip = ip;
+        this.port = port;
+    }
+
+    public String getRawIp(){
+        return this.ip+":"+this.port;
     }
 }

@@ -14,7 +14,7 @@ public class Embeds {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setColor(new Color(0xCE0405));
         embed.setTitle(Config.SERVER_NAME);
-        embed.setDescription("Version: 1.0.7");
+        embed.setDescription("Version: 1.0.8");
         return embed.build();
     }
 
@@ -54,8 +54,8 @@ public class Embeds {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setColor(new Color(0xCE0405));
         embed.setTitle(Config.SERVER_NAME);
-        embed.setDescription("Сервер `"+addr+"` доступен");
-        embed.addField("MOTD", info.getMotd(), true);
+        embed.setDescription("Сервер `"+addr+"` доступен\n```\n"+info.getMotd()+"\n```");
+        embed.addField("Raw IP", info.getRawIp(), true);
         embed.addField("Protocol", info.getProtocol() + "("+ MainDC.getInstance().protocols.protocolsMapOb.get(info.getProtocol()) +")", true);
         embed.addField("Online", info.getNow() + "/" + info.getMaxPlayer(), true);
         embed.addField("Core", info.getInfo(), true);

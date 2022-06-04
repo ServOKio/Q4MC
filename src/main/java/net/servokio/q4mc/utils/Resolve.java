@@ -42,7 +42,8 @@ public class Resolve {
                         io ? object.get("players").getAsJsonObject().get("now").getAsInt() : null,
                         io && object.has("favicon") && !object.get("favicon").isJsonNull() ? object.get("favicon").getAsString() : null,
                         io ? object.get("server").getAsJsonObject().get("name").getAsString() : "",
-                        io ? object.get("server").getAsJsonObject().get("protocol").getAsInt() : null
+                        io ? object.get("server").getAsJsonObject().get("protocol").getAsInt() : null,
+                            "хуй"
                     );
                 } else {
                     return null;
@@ -79,7 +80,8 @@ public class Resolve {
                     now,
                     favi,
                     info,
-                    protocol
+                    protocol,
+                    reply.getRawIp()
             );
         }
         return null;
