@@ -114,7 +114,7 @@ public class MCPing {
 
         }
 
-        JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
+        JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
         JsonElement descriptionJsonElement = jsonObject.get("description");
 
         if (descriptionJsonElement.isJsonObject()) {
