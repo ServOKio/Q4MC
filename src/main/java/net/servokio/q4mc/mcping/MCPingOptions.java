@@ -9,7 +9,11 @@ public class MCPingOptions {
     private int timeout;
 
     public MCPingOptions(String hostname){
-        this.hostname = hostname.contains(":") ? hostname.split(":")[0] : hostname;
+        this.hostname = hostname;
+        if(hostname.contains(":")){
+            String[] s = hostname.split(":");
+            this.hostname = s[s.length-1];
+        }
         this.charset = Charsets.UTF_8.displayName();
         this.port = hostname.contains(":") ? Integer.parseInt(hostname.split(":")[1]) : 25565;;
         this.timeout = 5000;

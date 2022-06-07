@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Methods {
     public ArrayList<String> methodsString;
 
-    public Methods(){
+    public Methods() {
         this.methodsString = new ArrayList<>();
         this.init();
     }
@@ -16,41 +16,42 @@ public class Methods {
     private void init() {
         System.out.println("Initialization of methods...");
 
-        registerMethod("bigpacket");
-        registerMethod("botjoiner");
-        registerMethod("doublejoin");
-        registerMethod("emptypacket");
-        registerMethod("gayspam");
-        registerMethod("handshake");
-        registerMethod("invaliddata");
-        registerMethod("invalidspoof");
-        registerMethod("invalidnames");
-        registerMethod("spoof");
         registerMethod("join");
-        registerMethod("legacyping");
-        registerMethod("legitnamejoin");
+        registerMethod("legitjoin");
         registerMethod("localhost");
-        registerMethod("pingjoin");
-        registerMethod("longhost");
-        registerMethod("longnames");
-        registerMethod("nullping");
+        registerMethod("ram");
+        registerMethod("sf");
+        registerMethod("botjoiner");
+        registerMethod("spoof");
         registerMethod("ping");
-        registerMethod("query");
-        registerMethod("randompacket");
+        registerMethod("nullping");
+        registerMethod("multikiller");
+        registerMethod("handshake");
         registerMethod("bighandshake");
-        registerMethod("unexpectedpacket");
-        registerMethod("memory");
+        registerMethod("query");
+        registerMethod("bigpacket");
+        registerMethod("network");
+        registerMethod("randombytes");
+        registerMethod("extremejoin");
+        registerMethod("spamjoin");
+        registerMethod("nettydowner");
+        registerMethod("yoonikscry");
+        registerMethod("colorcrasher");
+        registerMethod("tcphit");
+        registerMethod("queue");
+        registerMethod("botnet");
+        registerMethod("tcpbypass");
+        registerMethod("ultimatesmasher");
+        registerMethod("nabcry");
 
-        System.out.println(methodsString.size()+" methods");
+        System.out.println(methodsString.size() + " methods");
     }
 
-    public OptionData getDiscordData(){
-        OptionData data = new OptionData(OptionType.STRING, "method", "Метод атаки", true);
-        for(String s : methodsString) data.addChoice(s, s);
-        return data;
+    public OptionData getDiscordData() {
+        return new OptionData(OptionType.STRING, "method", "Метод атаки", true, true);
     }
 
-    private void registerMethod(String method){
+    private void registerMethod(String method) {
         this.methodsString.add(method);
     }
 }

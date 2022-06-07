@@ -14,37 +14,38 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Resolve {
-    public static ServerInfo getServerInfo(String addr){
-        if(Config.GET_INFO_METHOD == 0){
-            try{
+    public static ServerInfo getServerInfo(String addr) {
+        if (Config.GET_INFO_METHOD == 0) {
+            try {
 
                 StringBuilder result = new StringBuilder();
-                URL url = new URL("https://mcapi.us/server/status?ip="+addr);
+                URL url = new URL("https://mcapi.us/server/status?ip=" + addr);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; G4MC/0.0.1; +http://servokio.ru)");
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; G4MC/"+Config.VERSION+"; +http://servokio.ru)");
                 conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
                 conn.setRequestMethod("GET");
                 try (BufferedReader reader = new BufferedReader(
                         new InputStreamReader(conn.getInputStream()))) {
-                    for (String line; (line = reader.readLine()) != null; ) {
-                        result.append(line);
-                    }
+                        for (String line; (line = reader.readLine()) != null;) {
+                            result.append(line);
+                        }
                 }
 
                 int responseCode = conn.getResponseCode();
-                if(responseCode == 200){
+                if (responseCode == 200) {
                     JsonObject object = JsonParser.parseString(result.toString()).getAsJsonObject();
                     boolean io = object.get("online").getAsBoolean();
                     return new ServerInfo(
-                       object.get("online").getAsBoolean(),
-                       object.get("motd").getAsString(),
-                        io ? object.get("players").getAsJsonObject().get("max").getAsInt() : null,
-                        io ? object.get("players").getAsJsonObject().get("now").getAsInt() : null,
-                        io && object.has("favicon") && !object.get("favicon").isJsonNull() ? object.get("favicon").getAsString() : null,
-                        io ? object.get("server").getAsJsonObject().get("name").getAsString() : "",
-                        io ? object.get("server").getAsJsonObject().get("protocol").getAsInt() : null,
-                            "хуй"
-                    );
+                            object.get("online").getAsBoolean(),
+                            object.get("motd").getAsString(),
+                            io ? object.get("players").getAsJsonObject().get("max").getAsInt() : null,
+                            io ? object.get("players").getAsJsonObject().get("now").getAsInt() : null,
+                            io && object.has("favicon") && !object.get("favicon").isJsonNull()
+                                    ? object.get("favicon").getAsString()
+                                    : null,
+                            io ? object.get("server").getAsJsonObject().get("name").getAsString() : "",
+                            io ? object.get("server").getAsJsonObject().get("protocol").getAsInt() : null,
+                            "ip");
                 } else {
                     return null;
                 }
@@ -52,7 +53,7 @@ public class Resolve {
                 System.out.println(e.getMessage());
                 return null;
             }
-        } else if(Config.GET_INFO_METHOD == 1){
+        } else if (Config.GET_INFO_METHOD == 1) {
             MCPingOptions options = new MCPingOptions(addr);
             MCPingResponse reply;
             try {
@@ -81,10 +82,8 @@ public class Resolve {
                     favi,
                     info,
                     protocol,
-                    reply.getRawIp()
-            );
+                    reply.getRawIp());
         }
         return null;
     }
 }
-
