@@ -6,9 +6,10 @@ import java.util.List;
 public class Config {
     public static String TOKEN = "OTYxMzIwNDQ0MTU2MzE3Nzk4.Gqz9J6.2FOtQTRZdEjOsg13ylDPGVBvlzrt4M1M8dXeic";
     public static String SERVER_NAME = "Q4Bot";
-    @Deprecated
 
+    @Deprecated
     public static int GET_INFO_METHOD = 1;
+
     public static int ATTACK_POWER = -1;
     public static int ATTACK_TIME = 120;
     public static String ATTACK_IMAGE_URL = "https://cdn.discordapp.com/attachments/967462195409608744/982300206370537503/123.gif";

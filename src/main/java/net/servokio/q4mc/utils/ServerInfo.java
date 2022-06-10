@@ -44,7 +44,7 @@ public class ServerInfo {
         this.rawIp = rawIp;
 
         this.hasError = hasError;
-        this.errorMessage = errorMessage != null ? errorMessage.equals("connect timed out") ? errorMessage + " (школьники с хуёвым инетом)" : errorMessage : "";
+        this.errorMessage = errorMessage != null ? errorMessage.equals("connect timed out") ? errorMessage + " (maybe error on minecraft serverside)" : errorMessage : "";
     }
 
     public boolean isOnline(){
@@ -64,7 +64,7 @@ public class ServerInfo {
         try{
             String def = Config.SERVOKIO_BASE_API + "/b64tu";
             String newID = postReg(def, "{\"data\": \"+" + this.favicon + "+\"}");
-            return addParameter(Config.SERVOKIO_BASE_API + "/b64tu/image.png", "id", newID);
+            return Static.addParameter(Config.SERVOKIO_BASE_API + "/b64tu/image.png", "id", newID);
         } catch (Exception e) {
             return null;
         }
@@ -76,7 +76,7 @@ public class ServerInfo {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; ServOKioCorePlugin/0.0.1; +https://servokio.ru)");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; ServOKioCorePlugin/"+Config.VERSION+"; +https://servokio.ru)");
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty("Accept-Encoding", "gzip,deflate");
@@ -97,23 +97,6 @@ public class ServerInfo {
         }
         in.close();
         return response.toString();
-    }
-
-    private String addParameter(String URL, String name, String value) {
-        int qpos = URL.indexOf('?');
-        int hpos = URL.indexOf('#');
-        char sep = qpos == -1 ? '?' : '&';
-        String seg = sep + encodeUrl(name) + '=' + encodeUrl(value);
-        return hpos == -1 ? URL + seg : URL.substring(0, hpos) + seg
-                + URL.substring(hpos);
-    }
-
-    private String encodeUrl(String url) {
-        try {
-            return URLEncoder.encode(url, "UTF-8");
-        } catch (UnsupportedEncodingException uee) {
-            throw new IllegalArgumentException(uee);
-        }
     }
 
     public int getMaxPlayer() {
