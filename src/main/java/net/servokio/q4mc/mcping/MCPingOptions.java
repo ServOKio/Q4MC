@@ -12,11 +12,12 @@ public class MCPingOptions {
         this.hostname = hostname;
         if(hostname.contains(":")){
             String[] s = hostname.split(":");
-            this.hostname = s[s.length-1];
+            this.hostname = s[s.length - 2];
         }
+        System.out.println(this.hostname);
         this.charset = Charsets.UTF_8.displayName();
-        this.port = hostname.contains(":") ? Integer.parseInt(hostname.split(":")[1]) : 25565;;
-        this.timeout = 5000;
+        this.port = hostname.contains(":") ? Integer.parseInt(hostname.split(":")[1]) : 25565;
+        this.timeout = 1000 * 5; //5 seconds
     }
 
     public String getHostname(){

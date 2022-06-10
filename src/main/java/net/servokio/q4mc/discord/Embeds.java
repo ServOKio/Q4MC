@@ -21,7 +21,7 @@ public class Embeds {
         embed.setDescription("📄 Information");
         embed.addField("Dev.", "Q4 inc.", true);
         embed.addField("Lang. prog.", "JAVA", true);
-        embed.addField("Link", "https://dsc.gg/q4ch", true);
+        embed.addField("Link", "https://dsc.gg/q4c", true);
         embed.addField("Menu", "/help", true);
         return embed.build();
     }
@@ -54,11 +54,11 @@ public class Embeds {
         return embed.build();
     }
 
-    public MessageEmbed offlineServer(String addr) {
+    public MessageEmbed offlineServer(String addr, ServerInfo serverInfo) {
         EmbedBuilder embed = new EmbedBuilder();
         embed.setColor(new Color(0xCE0405));
         embed.setTitle(Config.SERVER_NAME);
-        embed.setDescription("❎ Server `" + addr + "` is not online ");
+        embed.setDescription("❎ Server `" + addr + "` is not online" + (serverInfo.hasError() ? "\n```\n"+serverInfo.getErrorMessage()+"\n```" : ""));
         embed.setTimestamp(Instant.now());
         return embed.build();
     }

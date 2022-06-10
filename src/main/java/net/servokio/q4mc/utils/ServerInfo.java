@@ -7,18 +7,20 @@ import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 public class ServerInfo {
-    private boolean isOnline;
-    private String motd;
+    private boolean hasError;
+    private String errorMessage;
+    private final boolean isOnline;
+    private final String motd;
 
-    private String favicon = null;
+    private final String favicon;
 
-    private int maxPlayer;
-    private int now;
+    private final int maxPlayer;
+    private final int now;
 
-    private String info;
-    private int protocol;
+    private final String info;
+    private final int protocol;
 
-    private String rawIp;
+    private final String rawIp;
 
     public ServerInfo(
             boolean isOnline,
@@ -28,7 +30,9 @@ public class ServerInfo {
             String favicon,
             String info,
             int protocol,
-            String rawIp
+            String rawIp,
+            boolean hasError,
+            String errorMessage
     ) {
         this.isOnline = isOnline;
         this.motd = motd;
@@ -38,6 +42,9 @@ public class ServerInfo {
         this.info = info;
         this.protocol = protocol;
         this.rawIp = rawIp;
+
+        this.hasError = hasError;
+        this.errorMessage = errorMessage != null ? errorMessage.equals("connect timed out") ? errorMessage + " (школьники с хуёвым инетом)" : errorMessage : "";
     }
 
     public boolean isOnline(){
@@ -69,10 +76,11 @@ public class ServerInfo {
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
         con.setRequestMethod("POST");
-        con.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; ServOKioCorePlugin/0.0.1; +http://servokio.ru)");
+        con.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; ServOKioCorePlugin/0.0.1; +https://servokio.ru)");
         con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
         con.setRequestProperty("Content-Type", "application/json");
         con.setRequestProperty("Accept-Encoding", "gzip,deflate");
+        con.setConnectTimeout(2000);
         con.setDoOutput(true);
         DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 
@@ -126,5 +134,13 @@ public class ServerInfo {
 
     public String getRawIp(){
         return this.rawIp;
+    }
+
+    public boolean hasError() {
+        return hasError;
+    }
+
+    public String getErrorMessage() {
+        return this.errorMessage;
     }
 }
