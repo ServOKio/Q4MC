@@ -23,20 +23,10 @@ public class CommandExecutor {
             Runtime run = Runtime.getRuntime();
             Process pr = run.exec("cmd /c " + cmd);
             pr.waitFor();
-            BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            String line = "";
-            while ((line=buf.readLine())!=null) {
-                System.out.println(line);
-            }
         } else {
             Runtime run = Runtime.getRuntime();
             Process pr = run.exec(cmd.replace("start ", ""));
             pr.waitFor();
-            BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-            String line = "";
-            while ((line=buf.readLine())!=null) {
-                System.out.println(line);
-            }
         }
     }
 }
