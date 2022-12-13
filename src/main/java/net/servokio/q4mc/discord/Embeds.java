@@ -21,6 +21,10 @@ public class Embeds {
         embed.setDescription("📄 Information");
         embed.addField("Dev.", "Q4 inc.", true);
         embed.addField("Lang. prog.", "JAVA", true);
+<<<<<<< Updated upstream
+=======
+        embed.addField("Link", "https://dsc.gg/q4ch", true);
+>>>>>>> Stashed changes
         embed.addField("Link", "https://dsc.gg/q4c", true);
         embed.addField("Menu", "/help", true);
         return embed.build();

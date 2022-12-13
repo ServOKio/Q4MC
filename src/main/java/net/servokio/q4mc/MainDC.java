@@ -1,7 +1,9 @@
 package net.servokio.q4mc;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.Commands;
@@ -15,14 +17,26 @@ import net.servokio.q4mc.threads.ThreadManager;
 import net.servokio.q4mc.threads.autoUpdate;
 import net.servokio.q4mc.utils.Methods;
 import net.servokio.q4mc.utils.Protocols;
+import net.servokio.q4mc.utils.Yiff;
 
 import javax.security.auth.login.LoginException;
+import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+<<<<<<< Updated upstream
+=======
+import java.net.HttpURLConnection;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
+>>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 
