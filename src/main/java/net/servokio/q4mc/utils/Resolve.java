@@ -17,50 +17,30 @@ public class Resolve {
     public static ServerInfo getServerInfo(String addr) {
         ServerInfo one = getFromLIB(addr);
         ServerInfo two;
-        if(one.hasError()){
+        if (one.hasError()) {
             //try mcaip
             two = getFromMCAPI(addr);
-            if(two.hasError()){
+            if (two.hasError()) {
                 return one;
             } else return two;
         } else return one;
     }
-<<<<<<< Updated upstream
 
-    private static ServerInfo getFromMCAPI(String addr){
+    private static ServerInfo getFromMCAPI(String addr) {
         try {
 
             StringBuilder result = new StringBuilder();
             URL url = new URL("https://mcapi.us/server/status?ip=" + addr);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; G4MC/"+Config.VERSION+"; +http://servokio.ru)");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; G4MC/" + Config.VERSION + "; +http://servokio.ru)");
             conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
             conn.setRequestMethod("GET");
             try (BufferedReader reader = new BufferedReader(
                     new InputStreamReader(conn.getInputStream()))) {
-                for (String line; (line = reader.readLine()) != null;) {
+                for (String line; (line = reader.readLine()) != null; ) {
                     result.append(line);
                 }
             }
-
-=======
-
-    private static ServerInfo getFromMCAPI(String addr){
-        try {
-
-            StringBuilder result = new StringBuilder();
-            URL url = new URL("https://mcapi.us/server/status?ip=" + addr);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; G4MC/"+Config.VERSION+"; +http://servokio.ru)");
-            conn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-            conn.setRequestMethod("GET");
-            try (BufferedReader reader = new BufferedReader(
-                    new InputStreamReader(conn.getInputStream()))) {
-                for (String line; (line = reader.readLine()) != null;) {
-                    result.append(line);
-                }
-            }
->>>>>>> Stashed changes
             int responseCode = conn.getResponseCode();
             if (responseCode == 200) {
                 JsonObject object = JsonParser.parseString(result.toString()).getAsJsonObject();
@@ -107,7 +87,7 @@ public class Resolve {
         }
     }
 
-    private static ServerInfo getFromLIB(String addr){
+    private static ServerInfo getFromLIB(String addr) {
         MCPingOptions options = new MCPingOptions(addr);
         MCPingResponse reply;
         try {
@@ -153,8 +133,4 @@ public class Resolve {
                 null
         );
     }
-<<<<<<< Updated upstream
 }
-=======
-}
->>>>>>> Stashed changes

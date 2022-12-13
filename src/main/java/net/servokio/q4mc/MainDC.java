@@ -27,8 +27,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
-<<<<<<< Updated upstream
-=======
 import java.net.HttpURLConnection;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -36,7 +34,6 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
->>>>>>> Stashed changes
 import java.util.ArrayList;
 import java.util.List;
 

