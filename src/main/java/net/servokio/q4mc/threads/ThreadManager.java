@@ -11,6 +11,10 @@ public class ThreadManager {
         this.threads = new HashMap<>();
     }
 
+    public boolean hasThreads(String memberID){
+        return this.threads.containsKey(memberID);
+    }
+
     public void addThread(String membedID, Thread thread){
         List<Thread> t;
         if(threads.containsKey(membedID)){
@@ -24,7 +28,7 @@ public class ThreadManager {
     }
 
     public void stopAll(String memberID){
-        if(threads.containsKey(memberID)) for(Thread t: threads.get(memberID)) t.interrupt();
+        if(threads.containsKey(memberID)) for(Thread t: threads.get(memberID)) t.interrupt();//
         threads.remove(memberID);
     }
 

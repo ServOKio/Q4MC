@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" build-on-make="true" name="Q4MC:jar">
-    <output-path>$PROJECT_DIR$/..</output-path>
+    <output-path>$USER_HOME$/Desktop/discord</output-path>
     <root id="archive" name="Q4MC.jar">
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />

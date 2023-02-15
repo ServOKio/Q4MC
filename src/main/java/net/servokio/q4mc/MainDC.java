@@ -96,10 +96,21 @@ public class MainDC {
     }
 
     private void updateProxy() throws IOException {
-        URL url = new URL("https://raw.githubusercontent.com/ivanoffskiy/test/main/proxies.txt");
-        ReadableByteChannel rbc = Channels.newChannel(url.openStream());
-        FileOutputStream foss = new FileOutputStream("./proxies.txt");
-        foss.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+
+        File jar = new File("./proxies.txt");
+        try {
+            if (jar.exists()) {
+                //ди нахуй
+            } else {
+                URL url = new URL("https://raw.githubusercontent.com/ivanoffskiy/test/main/proxies.txt");
+                ReadableByteChannel rbc = Channels.newChannel(url.openStream());
+                FileOutputStream foss = new FileOutputStream("./proxies.txt");
+                foss.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            }
+        } catch (Exception e) {
+            System.out.println("E: " + e.getMessage());
+            System.exit(0);
+        }
     }
 
     public void startJDA() {

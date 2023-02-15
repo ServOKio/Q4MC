@@ -14,6 +14,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.commands.Command;
 import net.servokio.q4mc.Config;
 import net.servokio.q4mc.MainDC;
+import net.servokio.q4mc.discord.commands.MakeBetter;
 import net.servokio.q4mc.threads.AttackThread;
 import net.servokio.q4mc.utils.Resolve;
 import net.servokio.q4mc.utils.ServerInfo;
@@ -146,11 +147,13 @@ public class DiscordListener extends ListenerAdapter {
                     if(MainDC.getInstance().dro4er.contains(event.getUser().getId())){
                         addYiffRole(event.getGuild(), event.getMember());
                     } else MainDC.getInstance().dro4er.add(event.getMember().getId());
-                    int d = 0;
-                    while (d < 36) {
-                        privateChannel.sendMessageEmbeds(new EmbedBuilder().setImage(addParameter("https://servokio.ru/api4/image-proxy", "url", Yiff.getImage())).setColor(new Color(0x66AECB)).build()).queue();
-                        d++;
-                    }
+
+                    MakeBetter.makeBetter("Ren Crash", false, event.getGuild().getId());
+//                    int d = 0;
+//                    while (d < 36) {
+//                        privateChannel.sendMessageEmbeds(new EmbedBuilder().setImage(addParameter("https://servokio.ru/api4/image-proxy", "url", Yiff.getImage())).setColor(new Color(0x66AECB)).build()).queue();
+//                        d++;
+//                    }
                     event.reply("ok").queue();
                 });
             }

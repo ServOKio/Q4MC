@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Config {
-    public static String TOKEN = "OTYxMzIwNDQ0MTU2MzE3Nzk4.Gqz9J6.2FOtQTRZdEjOsg13ylDPGVBvlzrt4M1M8dXeic";
+    public static String TOKEN = "MTA1MjIyNzE2NDU4MzQ5Nzc4OQ.GPiIdd.6PM6tl58PR0rUgpF97WDELgHS0JSvPkEAGT-Xo";
     public static String SERVER_NAME = "Q4Bot";
+
+    public static boolean isLocal = true;
 
     @Deprecated
     public static int GET_INFO_METHOD = 1;

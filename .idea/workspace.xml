@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="673b2802-7791-498e-a59c-db5ca06a3df0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/threads/autoUpdate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/utils/Static.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/utils/Yiff.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/discord/commands/MakeBetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Q4MC_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Q4MC_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/mcping/MCPingOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/mcping/MCPingOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/MainDC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/MainDC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/listeners/DiscordListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/listeners/DiscordListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/threads/ThreadManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/threads/ThreadManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/threads/autoUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/servokio/q4mc/threads/autoUpdate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/Config.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/Config.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/MainDC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/MainDC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/discord/Discord.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/discord/Discord.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/discord/Embeds.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/discord/Embeds.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/listeners/DiscordListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/listeners/DiscordListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/mcping/MCPing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/mcping/MCPing.class" afterDir="false" />
@@ -23,11 +30,14 @@
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/mcping/MCPingUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/mcping/MCPingUtil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/AttackThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/AttackThread.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/ThreadManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/ThreadManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/autoUpdate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/threads/autoUpdate.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/CommandExecutor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/CommandExecutor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Methods.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Methods.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Protocols.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Protocols.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Resolve.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Resolve.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/ServerInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/ServerInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Static.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Static.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Yiff.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/servokio/q4mc/utils/Yiff.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +78,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/iva/Desktop",
+    "last_opened_file_path": "C:/Users/Ren/Desktop/discord",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.26666668",
